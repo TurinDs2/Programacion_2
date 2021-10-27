@@ -1,3 +1,15 @@
+/*
+Integrante 1:
+Carlos Roberto Pérez Dubón - 12176
+Creación de Método para Arreglo Predefinido, Menú Recursivo, Método de Agregar varios Carros, Método para Eliminar 1 solo Carro
+Métodos de Impresión y Exportación a Excel
+
+Integrante 2:
+Karla Alessandra Pérez López 
+
+Integrante 3:
+Francisco Pérez
+*/
 package arreglos_vehiculos_usados;
 
 import javax.swing.JOptionPane;
