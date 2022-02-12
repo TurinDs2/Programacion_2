@@ -2,7 +2,7 @@ package vehiculos_usados_poo;
 import javax.swing.JOptionPane;
 import java.io.PrintWriter;
 
-public class Vehiculo {
+public class Vehiculo extends Agencia{
     private char Codigo[] = new char[7];
     private String Marca, Modelo, Color;
     private int Anio, Recorrido;
@@ -72,13 +72,13 @@ public class Vehiculo {
     public void setDatos(int i){
         this.Codigo = JOptionPane.showInputDialog("Ingrese el Código del Vehículo #"+i+":").toCharArray();
         this.Marca = JOptionPane.showInputDialog("Ingresela Marca del Vehículo #"+i+":");
-        this.Modelo = JOptionPane.showInputDialog("Ingrese el Modelo del Vehículo #"+i+":");
-        this.Color = JOptionPane.showInputDialog("Ingrese el Color del Vehículo #"+i+":");
-        this.Anio = Integer.parseInt( JOptionPane.showInputDialog("Ingrese el Año del Vehículo #"+i+":") );
-        this.Recorrido = Integer.parseInt( JOptionPane.showInputDialog("Ingrese el Recorrido en Kilometros del Vehículo #"+i+":") );
-        this.Motor = JOptionPane.showInputDialog("Ingrese Descripción del Motor del Vehículo #"+i+":");
-        this.Traccion = JOptionPane.showInputDialog("Ingrese la Tracción del Vehículo #"+i+":");
-        this.Precio = Float.parseFloat( JOptionPane.showInputDialog("Ingrese el Precio del Vehículo #"+i+":") );
+        this.Modelo = JOptionPane.showInputDialog("Ingrese el Modelo del "+ Marca +":");
+        this.Color = JOptionPane.showInputDialog("Ingrese el Color del "+ Marca + " " + Modelo +":");
+        this.Anio = Integer.parseInt( JOptionPane.showInputDialog("Ingrese el Año del "+ Marca + " " + Modelo +":") );
+        this.Recorrido = Integer.parseInt( JOptionPane.showInputDialog("Ingrese el Recorrido en Kilometros del "+ Marca + " " + Modelo +":") );
+        this.Motor = JOptionPane.showInputDialog("Ingrese Descripción del Motor del "+ Marca + " " + Modelo +":");
+        this.Traccion = JOptionPane.showInputDialog("Ingrese la Tracción del "+ Marca + " " + Modelo +":");
+        this.Precio = Float.parseFloat( JOptionPane.showInputDialog("Ingrese el Precio del "+ Marca + " " + Modelo +":") );
     }
 
     public char[] getCodigo() {
@@ -117,7 +117,7 @@ public class Vehiculo {
         return Precio;
     }
     
-    public void ImprimirCLI(){
+    public void ImprimirCLI(char Op){
         System.out.printf("|%8s|%11s|%16s|%11s|%9d|%15d|%15s|%14s|L.%10.2f|\n", String.valueOf(Codigo), Marca, Modelo, Color, Anio, Recorrido, Motor, Traccion, Precio);
     }
     public void Borde(){
