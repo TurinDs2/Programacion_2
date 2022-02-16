@@ -36,15 +36,20 @@ public class Bienes_Raices_POO {
     
     public static char SubMenu(){
         char Op;
-        
-        Op = JOptionPane.showInputDialog("***SubMenú***\n"
-                + "a.-> Bienes Raices.\n"
-                + "b.-> Duenio.\n"
-                + "c.-> Comprador.\n"
-                + "d.-> Oficial de Ventas.\n"
-                + "e.-> Administrativo.\n"
-                + "f.-> Regresar al Menu Principal.\n"
-                + "Su Elección es: ").toLowerCase().charAt(0);
+        try{
+            Op = JOptionPane.showInputDialog("***SubMenú***\n"
+                    + "a.-> Bienes Raices.\n"
+                    + "b.-> Duenio.\n"
+                    + "c.-> Comprador.\n"
+                    + "d.-> Oficial de Ventas.\n"
+                    + "e.-> Administrativo.\n"
+                    + "f.-> Regresar al Menu Principal.\n"
+                    + "Su Elección es: ").toLowerCase().charAt(0);
+        } catch (java.lang.NullPointerException e) {
+            Op = 'f';
+        } catch (java.lang.StringIndexOutOfBoundsException e){
+            Op = '.';
+        }
         
         if( Op<'a' || Op>'f' ){
             JOptionPane.showMessageDialog(null, "La Opción Ingresada NO Existe!!!\nFavor vuelva a Intentarlo!!!");
@@ -56,17 +61,22 @@ public class Bienes_Raices_POO {
     
     public static char MenuModificarBien(){
         char Op;
-        
-        Op = JOptionPane.showInputDialog("***Menú Modificar***\n"
-                + "a.-> Direccón.\n"
-                + "b.-> Color.\n"
-                + "c.-> Nivel.\n"
-                + "d.-> Habitación.\n"
-                + "e.-> Baño.\n"
-                + "f.-> Parqueo.\n"
-                + "g.-> Precio.\n"
-                + "h.-> Regresar al Manu Pricipal"
-                + "Su Elección es: ").toLowerCase().charAt(0);
+        try{
+            Op = JOptionPane.showInputDialog("***Menú Modificar***\n"
+                    + "a.-> Direccón.\n"
+                    + "b.-> Color.\n"
+                    + "c.-> Nivel.\n"
+                    + "d.-> Habitación.\n"
+                    + "e.-> Baño.\n"
+                    + "f.-> Parqueo.\n"
+                    + "g.-> Precio.\n"
+                    + "h.-> Regresar al Menu Pricipal"
+                    + "Su Elección es: ").toLowerCase().charAt(0);
+        } catch (java.lang.NullPointerException e) {
+            Op = 'h';
+        } catch (java.lang.StringIndexOutOfBoundsException e){
+            Op = '.';
+        }
         
         if( Op<'a' || Op>'h' ){
             JOptionPane.showMessageDialog(null, "La Opción Ingresada NO Existe!!!\nFavor vuelva a Intentarlo!!!");
@@ -300,10 +310,22 @@ public class Bienes_Raices_POO {
                 case 'C':
                     SM = SubMenu();
                     
-                    Leer = JOptionPane.showInputDialog("Cantidad de Registros a Ingresar:");
-                    Tam += Short.parseShort( Leer );
-
-                    A = Ingreso( A, SM, Tam);                    
+                    if( SM != 'f'){
+                        do{
+                            Leer = JOptionPane.showInputDialog("Cantidad de Registros a Ingresar:");
+                            try{
+                                Tam = (short)( A.length + Short.parseShort( Leer ) );
+                            }catch(java.lang.NumberFormatException e){
+                                Tam = -1;
+                            }
+                                
+                            if( Tam < A.length ){
+                                JOptionPane.showMessageDialog(null,"La cantidad a digitar debe ser un número entero positivo",
+                                        ".:.Error.:.",0);
+                            }
+                        }while(Tam < A.length);
+                        A = Ingreso( A, SM, Tam);
+                    }                    
                     break;
                 case 'D'://Modificar\
                     SM = SubMenu();

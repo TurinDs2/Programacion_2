@@ -90,8 +90,14 @@ public class Bienes_Raices extends Agencia {
     
     public void Leer(int i) {
         String Leer = "";
-
-        setDireccion(JOptionPane.showInputDialog("Ingrese la Dirección de la Casa #" + (i + 1) + ":"));
+        do{
+            try{
+                Leer = JOptionPane.showInputDialog("Ingrese la Dirección de la Casa #" + (i + 1) + ":");
+                setDireccion(Leer);
+            }catch(java.lang.NullPointerException e){
+                Leer = " ";
+            }
+        }while( Leer.length()<=0 );
         setColor(JOptionPane.showInputDialog("Ingrese el Color de la Casa #" + (i + 1) + ":"));
         Leer = JOptionPane.showInputDialog("Ingrese la Cantidad de Niveles de la Casa #" + (i + 1) + ":");
         setNivel(Short.parseShort(Leer));
