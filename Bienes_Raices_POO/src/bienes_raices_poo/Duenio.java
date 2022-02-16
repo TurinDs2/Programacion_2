@@ -22,17 +22,23 @@ public class Duenio extends Cliente {
     //Funciones (return) Getter (NO Tiene)
     
     //Otros Métodos
-
+    public void Leer(int i) {
+        super.Leer(i);
+    }
+    
     public void ImprimirCLI(int i){
-        super.ImprimirCLI(i);        
+        super.ImprimirCLI(i);
+        System.out.println("");
     }
     
     public void Borde(){
         super.Borde();
+        System.out.println("");
     }
     
     public void Exportar(PrintWriter Fila){
         super.Exportar(Fila);
+        Fila.println();
     }
     
     //Método Abstracto

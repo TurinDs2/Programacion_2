@@ -1,7 +1,8 @@
 package bienes_raices_poo;
 import java.io.PrintWriter;
+import javax.swing.JOptionPane;
 
-public abstract class Persona {
+public abstract class Persona extends Agencia{
     //Atributos
     private char Identidad[] = new char[15];
     private String nombre;
@@ -71,6 +72,17 @@ public abstract class Persona {
     }
     
     //Otros Métodos...
+    public void Leer(int i) {
+        String Leer = "";
+
+        setIdentidad( JOptionPane.showInputDialog("Ingrese el Número de Identidad de la Persona #" + (i + 1) + ":").toCharArray() );
+        setNombre( JOptionPane.showInputDialog("Ingrese el Nombre de la Persona #" + (i + 1) + ":") );
+        setGenero( JOptionPane.showInputDialog("Ingrese el Género de " + getNombre() + ":").charAt(0) );
+        Leer = JOptionPane.showInputDialog("Ingrese la Edad de " + getNombre() + ":");
+        setEdad( Short.parseShort(Leer) );
+        setCelular( JOptionPane.showInputDialog("Ingrese el Número de Celular de " + getNombre() + ":").toCharArray() );
+    }
+    
     public void ImprimirCLI(int i){
         System.out.printf("|%8d|%15s|%45s|%6s|%4d|%15s|", i, String.valueOf( getIdentidad() ), getNombre(), getGenero(), getEdad(), String.valueOf( getCelular() ) );
     }
@@ -80,7 +92,7 @@ public abstract class Persona {
     }
     
     public void Exportar(PrintWriter Fila){
-        Fila.print( String.valueOf( getIdentidad() ) +"\t"+ getNombre() +"\t"+ getGenero() +"\t"+ getEdad() +"\t"+ String.valueOf( getCelular() ) );
+        Fila.print( String.valueOf( getIdentidad() ) +"\t"+ getNombre() +"\t"+ getGenero() +"\t"+ getEdad() +"\t"+ String.valueOf( getCelular() ) +"\t" );
     }
     
     //Método Abstracto

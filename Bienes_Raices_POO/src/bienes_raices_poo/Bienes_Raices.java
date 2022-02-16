@@ -1,7 +1,8 @@
 package bienes_raices_poo;
 import java.io.PrintWriter;
+import javax.swing.JOptionPane;
 
-public class Bienes_Raices {
+public class Bienes_Raices extends Agencia {
     //Atributos
     private String Direccion, Color;
     private short Nivel,Habitacion,Banio,Parqueo;
@@ -87,6 +88,23 @@ public class Bienes_Raices {
         return Precio;
     }
     
+    public void Leer(int i) {
+        String Leer = "";
+
+        setDireccion(JOptionPane.showInputDialog("Ingrese la Dirección de la Casa #" + (i + 1) + ":"));
+        setColor(JOptionPane.showInputDialog("Ingrese el Color de la Casa #" + (i + 1) + ":"));
+        Leer = JOptionPane.showInputDialog("Ingrese la Cantidad de Niveles de la Casa #" + (i + 1) + ":");
+        setNivel(Short.parseShort(Leer));
+        Leer = JOptionPane.showInputDialog("Ingrese la Cantidad de Habitaciones de la Casa #" + (i + 1) + ":");
+        setHabitacion(Short.parseShort(Leer));
+        Leer = JOptionPane.showInputDialog("Ingrese la Cantidad de Baños de la Casa #" + (i + 1) + ":");
+        setBanio(Short.parseShort(Leer));
+        Leer = JOptionPane.showInputDialog("Ingrese la Cantidad de Parqueos de la Casa #" + (i + 1) + ":");
+        setParqueo(Short.parseShort(Leer));
+        Leer = JOptionPane.showInputDialog("Ingrese el Precio de la Casa #" + (i + 1) + ":");
+        setPrecio(Float.parseFloat(Leer));
+    }
+
     public void ImprimirCLI(int i){
         System.out.printf("|%8d|%29s|%15s|%7d|%12d|%5d|%8d|L%12.2f|\n"
                     ,i,Direccion,Color,Nivel,Habitacion,Banio,Parqueo,Precio);
@@ -98,5 +116,10 @@ public class Bienes_Raices {
     
     public void Exportar(PrintWriter Fila){
         Fila.print(Direccion +"\t"+ Color +"\t"+ Nivel +"\t"+ Habitacion +"\t"+ Banio +"\t"+ Parqueo +"\t"+ Precio +"\n");
+    }
+    
+    //Metodo Abstracto
+    public void Soy(){
+        JOptionPane.showMessageDialog(null, "Hola, Soy Bien Raiz!!!");
     }
 }

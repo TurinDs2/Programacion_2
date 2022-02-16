@@ -31,11 +31,18 @@ public class OficialNegocio extends Empleado {
         return Comision;
     }
     
-        //Otros Métodos
+    //Otros Métodos
+    public void Leer(int i) {
+        String Leer = "";
+        super.Leer(i);
+
+        Leer = JOptionPane.showInputDialog("Ingrese la Comisión de " + super.getNombre() + ":");
+        setComision( Float.parseFloat(Leer) );
+    }
 
     public void ImprimirCLI(int i){
         super.ImprimirCLI(i);
-        System.out.printf("|L%6.2f|\n", String.valueOf( getTalento() ), getSalario() );
+        System.out.printf("|%10.2f|\n", getComision() );
     }
     
     public void Borde(){
@@ -45,7 +52,7 @@ public class OficialNegocio extends Empleado {
     
     public void Exportar(PrintWriter Fila){
         super.Exportar(Fila);
-        Fila.print( String.valueOf( getTalento() ) +"\t"+ getSalario() +"\n" );
+        Fila.print( getComision() +"\n" );
     }
     
     //Método Abstracto
